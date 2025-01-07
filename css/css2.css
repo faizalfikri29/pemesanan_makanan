@@ -1,0 +1,90 @@
+/* div {
+    margin: 20px;
+}
+ul{
+    list-style-type: none;
+    width: 500px;
+}
+li img {
+    width: 200pc;
+}
+li h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+}
+li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    overflow: auto;
+}
+li:hover {
+    background: #eee;
+    cursor: pointer;
+} */
+.row {
+    border: 2px solid;
+}
+.box {
+    padding: 40px;
+    background: orange;
+    margin: 10px 0px;
+    text-align: justify;
+}
+div {
+    margin: 20px;
+}
+
+ul {
+    list-style-type: none;
+    width: 500px;
+    padding: 0;
+}
+
+li {
+    display: flex; /* Mengatur elemen anak dalam <li> sebagai flex container */
+    align-items: center; /* Menjaga gambar dan teks sejajar secara vertikal */
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd; /* Opsional: tambahkan garis tepi */
+    margin-bottom: 10px;
+}
+
+.img {
+    width: 80px; /* Atur ukuran gambar */
+    margin-right: 15px; /* Tambahkan jarak antara gambar dan teks */
+    border-radius: 5px; /* Opsional: sudut gambar membulat */
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+li h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    margin: 0; /* Hilangkan margin bawaan */
+    font-size: 18px; /* Atur ukuran teks */
+}
+
+li span {
+    color: #888; /* Warna teks harga */
+    font-size: 16px;
+}
+
+li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+a {
+    text-align: justify;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: white;
+    text-decoration: none;
+    color: inherit;
+}
+.box .card input {
+    width: 50px; 
+    height: 50px;
+}

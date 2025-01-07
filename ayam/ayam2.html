@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nasi Bakar Form</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #f8f9fa; /* Warna latar belakang */
+        font-family: Arial, sans-serif;
+      }
+      .form-container {
+        background-color: #888888; /* Warna abu-abu header */
+        padding: 10px;
+        text-align: center;
+        margin: 0 auto;
+        border-radius: 5px;
+        max-width: 500px;
+      }
+      .form-container h2 {
+        margin: 0;
+        color: black;
+        font-weight: 400;
+      }
+
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .form-group input {
+        background-color: #e3d0d0;
+        color: rgb(0, 0, 0);
+        border: none;
+        height: 40px;
+        border-radius: 5px;
+      }
+      .form-group input::placeholder {
+        color: rgb(105, 99, 99); /* Warna placeholder */
+        font-weight: 300;
+      }
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .btn {
+        margin: 0 10px;
+        background-color: #6e6e6e;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+      .btn:hover {
+        background-color: #555555;
+      }
+      .logo {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #6e6e6e;
+        color: white;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+<body style="background-image: url('../img/ayam\ sambal\ ijo.jpg'); background-position: center; background-repeat: no-repeat; background-color: olive;">
+    <!-- Form Container -->
+    <div class="form-container mt-5">
+      <h2>Ayam sambal ijo</h2>
+    </div>
+    <!-- Form -->
+    <div class="container mt-4">
+      <form
+        id="frm_pesan"
+        method="post"
+        action="hasil.php"
+        onsubmit="return confirmSubmission()"
+      >
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control text-center"
+            placeholder="Masukan nama Anda"
+            name="nama"
+            id="nama"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control text-center"
+            placeholder="Jumlah Pesanan"
+            name="jumlah"
+            id="jumlah"
+            min="1"
+            oninput="updateTotal()"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control text-center"
+            placeholder="No Hp"
+            name="hp"
+            id="hp"
+          />
+        </div>
+        <div class="form-group">
+          <span
+            class="form-control text-center"
+            aria-placeholder="Harga"
+            id="totalharga"
+            >15.000</span
+          >
+        </div>
+        <!-- Button Container -->
+        <div class="btn-container">
+          <button type="submit" class="btn" name="simpan">Submit</button>
+          <a type="button" href="../ayam.php" class="btn">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  function confirmSubmission() {
+      let nama = document.getElementById("nama");
+      let jumlah = document.getElementById("jumlah");
+      let hp = document.getElementById("hp");
+      let totalharga = document.getElementById("totalharga");
+      
+      let hargaSatuan = 15000;
+      let total = hargaSatuan * parseInt(jumlah.value);
+  
+      // Buat dialog
+      let dialog = document.createElement('div');
+      dialog.style.cssText = `
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: white;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          z-index: 1000;
+      `;
+      
+      dialog.innerHTML = `
+          <h4 style="margin-top:0">Terima kasih telah memesan di Sari Rasa</h4>
+          <p>Konfirmasi pesanan:</p>
+          <p>Nama: ${nama.value}</p>
+          <p>Jumlah Pesanan: ${jumlah.value}</p>
+          <p>Total Harga: Rp${total.toLocaleString()}</p>
+          <p>No Hp: ${hp.value}</p>
+          <div style="text-align:right;margin-top:20px;">
+              <button onclick="proceedToConfirm()" style="margin-right:10px;padding:5px 15px;">OK</button>
+              <button onclick="cancelConfirm()" style="padding:5px 15px;">Cancel</button>
+          </div>
+      `;
+
+      let overlay = document.createElement('div');
+      overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.5);
+          z-index: 999;
+      `;
+  
+      document.body.appendChild(overlay);
+      document.body.appendChild(dialog);
+  
+      return false;
+  }
+  
+  function proceedToConfirm() {
+      document.getElementById("frm_pesan").submit();
+  }
+  
+  function cancelConfirm() {
+      // Hapus dialog dan overlay
+      document.querySelector('div[style*="z-index: 1000"]').remove();
+      document.querySelector('div[style*="z-index: 999"]').remove();
+  }
+  
+  function updateTotal() {
+      let jumlah = document.getElementById("jumlah").value;
+      let totalharga = document.getElementById("totalharga");
+      let hargaSatuan = 15000;
+      
+      if (jumlah && !isNaN(jumlah)) {
+          let total = hargaSatuan * parseInt(jumlah);
+          totalharga.textContent = "Rp" + total.toLocaleString();
+      } else {
+          totalharga.textContent = "Rp15.000";
+      }
+  }
+  </script>

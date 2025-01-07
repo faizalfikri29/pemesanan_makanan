@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #deebb3;
+}
+.awal {
+  display: flex;
+  margin: 20px;
+  background-color: aquamarine;
+}
+.awal nav-link {
+  display: inline-block;
+  background-color: #6e6e6e;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+img {
+  background-color: #6e6e6e;
+  color: white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  position: absolute;
+  right: 20px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+}
