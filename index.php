@@ -184,7 +184,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Meila Ayu Zahara</h5>
                                 <h6 class="card-title" style="text-align: center;">Anggota</h6>
-                                <p class="card-text">"Manusia adalah masyarakat"</p>
+                                <p class="card-text">"Life goes on. do it, evaluate it, improve it."</p>
                                 <div class="social-media">
                                   <a href="https://www.instagram.com/la_la.updates/">
                                     <img src="img/logoig.png" alt="Instagram" class="mr-2" style="width: 30px; height: 30px;">
